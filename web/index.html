@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101629">
+  <title>Vértice — Loja de tecnologia</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="#" data-go="shop"><span class="brand-symbol">V</span><span>vértice<span class="brand-dot">.</span></span></a>
+      <nav class="topnav" aria-label="Navegação principal">
+        <button class="nav-button selected" id="tabShop" type="button">Explorar produtos</button>
+        <button class="nav-button" id="tabOrders" type="button">Meus pedidos <span id="ordersCount" class="nav-count">0</span></button>
+      </nav>
+      <button type="button" class="cart-toggle" id="cartToggle" aria-controls="cartPanel">
+        <span>🛍</span> Carrinho <span id="cartCount" class="count">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container" id="hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="green-dot"></span> TECH QUE ACOMPANHA VOCÊ</div>
+        <h1>Seu próximo <em>upgrade</em> começa aqui.</h1>
+        <p>Periféricos e acessórios para transformar o seu setup. Encontre os seus favoritos.</p>
+        <button id="heroButton" class="button button-primary">Explorar catálogo <span aria-hidden="true">↗</span></button>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-glow"></div>
+        <div class="orb orb-one">🎧</div>
+        <div class="orb orb-two">⌨️</div>
+        <div class="orb orb-three">🖱️</div>
+        <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
+      </div>
+    </section>
+
+    <section class="container catalog-section" id="shopView">
+      <div class="section-heading">
+        <div><div class="section-kicker">SELEÇÃO VÉRTICE</div><h2>Produtos em destaque</h2><p>Encontre o acessório perfeito para o seu dia a dia.</p></div>
+        <div class="catalog-tools"><span class="mini-tag">⚡ Estoque limitado</span></div>
+      </div>
+      <div class="products-grid" id="products"><p class="empty">Carregando catálogo...</p></div>
+      <div class="lookup-panel">
+        <div><h3>🔍 Consultar produto por código</h3><p>Recebeu um código de produto? Confira os detalhes aqui.</p></div>
+        <form id="lookupForm" class="lookup-form"><label class="sr-only" for="lookupId">Código do produto</label><input id="lookupId" type="number" min="1" step="1" placeholder="Ex.: 3" required><button class="button button-dark" type="submit">Consultar</button></form>
+        <div class="lookup-result" id="lookupResult" role="status"></div>
+      </div>
+    </section>
+
+    <section class="container orders-section" id="ordersView" hidden>
+      <div class="section-heading"><div><div class="section-kicker">ACOMPANHE SUAS COMPRAS</div><h2>Meus pedidos</h2><p>Consulte seus pedidos em aberto ou o histórico completo.</p></div></div>
+      <div class="order-toolbar"><button id="ordersActive" class="filter-button current" type="button">Em aberto</button><button id="ordersAll" class="filter-button" type="button">Todos os pedidos</button></div>
+      <div id="ordersList" class="orders-list"></div>
+    </section>
+  </main>
+
+  <footer class="footer"><div class="container footer-inner"><span class="brand footer-brand"><span class="brand-symbol">V</span> vértice<span class="brand-dot">.</span></span><span>Loja demonstrativa • ambiente local de estudo</span></div></footer>
+
+  <div class="overlay" id="cartOverlay" hidden></div>
+  <aside class="cart-panel" id="cartPanel" aria-label="Seu carrinho" aria-hidden="true">
+    <div class="cart-header"><div><span class="section-kicker">SEU PEDIDO</span><h2>Meu carrinho <span id="cartTitleCount">(0)</span></h2></div><button class="icon-button" id="cartClose" aria-label="Fechar carrinho">✕</button></div>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-summary">
+      <label for="couponInput">Cupom de desconto</label>
+      <div class="coupon-wrap"><input id="couponInput" type="text" placeholder="Digite seu cupom" autocomplete="off"><span>10% com BEMVINDO10</span></div>
+      <div class="summary-line"><span>Subtotal</span><strong id="cartSubtotal">R$ 0,00</strong></div>
+      <p class="shipping-note">Frete grátis a partir de R$ 300,00. Abaixo disso, R$ 18,90.</p>
+      <button class="button button-primary checkout-button" id="checkoutButton" type="button">Finalizar pedido <span>→</span></button>
+    </div>
+  </aside>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
